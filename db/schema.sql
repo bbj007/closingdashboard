@@ -1,0 +1,17 @@
+CREATE TABLE company (id INTEGER PRIMARY KEY, company_code TEXT UNIQUE, company_name TEXT, timezone TEXT, is_active INTEGER DEFAULT 1);
+CREATE TABLE closing_schedule (id INTEGER PRIMARY KEY, closing_month TEXT, start_date TEXT, target_end_at TEXT, current_stage TEXT, overall_status TEXT);
+CREATE TABLE closing_result (id INTEGER PRIMARY KEY, closing_month TEXT, company_code TEXT, target_completed_at TEXT, actual_completed_at TEXT, is_completed INTEGER, is_delayed INTEGER, delay_minutes INTEGER);
+CREATE TABLE closing_history (id INTEGER PRIMARY KEY, company_code TEXT, closing_month TEXT, completed_at TEXT, delay_minutes INTEGER);
+CREATE TABLE module_closing_status (id INTEGER PRIMARY KEY, closing_month TEXT, company_code TEXT, module_code TEXT, status TEXT, error_count INTEGER);
+CREATE TABLE closing_issue (id INTEGER PRIMARY KEY, issue_id TEXT, closing_month TEXT, company_code TEXT, module_code TEXT, title TEXT, severity TEXT, status TEXT, owner TEXT, due_date TEXT, exec_report_required INTEGER);
+CREATE TABLE chat_channel (id INTEGER PRIMARY KEY, channel_id TEXT, channel_name TEXT, source_system TEXT);
+CREATE TABLE chat_message (id INTEGER PRIMARY KEY, message_id TEXT, thread_id TEXT, channel_id TEXT, sender_id TEXT, sender_name TEXT, sender_role TEXT, sender_department TEXT, timestamp TEXT, text TEXT, related_company_code TEXT, related_module TEXT);
+CREATE TABLE chat_thread (id INTEGER PRIMARY KEY, thread_id TEXT, channel_id TEXT, started_at TEXT, last_message_at TEXT);
+CREATE TABLE support_request (id INTEGER PRIMARY KEY, request_id TEXT, thread_id TEXT, title TEXT, requester TEXT, requester_department TEXT, operator TEXT, company_code TEXT, module_code TEXT, status TEXT, bottleneck TEXT, action_item TEXT, decision_required INTEGER, exec_report_required INTEGER);
+CREATE TABLE monthly_change (id INTEGER PRIMARY KEY, closing_month TEXT, company_code TEXT, change_type TEXT, importance TEXT, summary TEXT);
+CREATE TABLE dashboard_generation_history (id INTEGER PRIMARY KEY, closing_month TEXT, generated_at TEXT, input_hash TEXT, html_path TEXT, approved_by TEXT);
+CREATE TABLE email_recipient_group (id INTEGER PRIMARY KEY, group_name TEXT);
+CREATE TABLE email_recipient (id INTEGER PRIMARY KEY, group_id INTEGER, email TEXT, name TEXT, role TEXT);
+CREATE TABLE email_send_history (id INTEGER PRIMARY KEY, closing_month TEXT, sent_at TEXT, recipients_json TEXT, subject TEXT, success INTEGER, error_message TEXT);
+CREATE TABLE interface_log (id INTEGER PRIMARY KEY, interface_type TEXT, adapter_name TEXT, request_id TEXT, requested_at TEXT, duration_ms INTEGER, success INTEGER, error_message TEXT);
+CREATE TABLE llm_analysis_log (id INTEGER PRIMARY KEY, stage TEXT, model_name TEXT, prompt_version TEXT, schema_valid INTEGER, requested_at TEXT, completed_at TEXT, token_input INTEGER, token_output INTEGER, error_message TEXT);

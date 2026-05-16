@@ -1,0 +1,10 @@
+<!doctype html><html><body style="font-family:Arial,sans-serif;color:#1f2937;">
+<h2 style="margin:0 0 8px;">Executive Monthly Closing Dashboard</h2>
+<p>기준월: <b>{{closingMonth}}</b></p>
+<table width="100%" cellpadding="8" cellspacing="0" border="1" style="border-collapse:collapse;border-color:#e5e7eb;">
+<tr><th>법인</th><th>단계</th><th>상태</th><th>지연</th></tr>
+{{#each closingStatus.companies}}<tr><td>{{companyName}}</td><td>{{stage}}</td><td>{{status}}</td><td>{{delayMinutes}}분</td></tr>{{/each}}
+</table>
+<h3>Risk Alerts</h3><ul>{{#each dashboardSummary.riskAlerts}}<li>{{this}}</li>{{/each}}</ul>
+<h3>Action Items</h3><ul>{{#each dashboardSummary.actionItems}}<li>{{this}}</li>{{/each}}</ul>
+</body></html>
