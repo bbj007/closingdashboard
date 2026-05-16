@@ -1,0 +1,1 @@
+{"type":"object","required":["supportRequests"],"properties":{"supportRequests":{"type":"array","items":{"type":"object","required":["requestId","title","status"],"properties":{"requestId":{"type":"string"},"title":{"type":"string"},"status":{"type":"string"}}}}}}

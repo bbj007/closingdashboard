@@ -1,0 +1,23 @@
+{
+  "name": "monthly-closing-dashboard",
+  "version": "0.1.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "lint": "echo 'add eslint config'",
+    "test": "echo 'no tests yet'"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "axios": "^1.7.7",
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.5",
+    "electron-log": "^5.2.4",
+    "handlebars": "^4.7.8",
+    "nodemailer": "^6.9.16",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "electron": "^33.2.0"
+  }
+}
